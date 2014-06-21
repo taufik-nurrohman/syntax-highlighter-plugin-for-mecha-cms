@@ -1,0 +1,10 @@
+plugin_sh_title_languages: Languages
+plugin_sh_title_style_config: Style Configurator
+plugin_sh_title_skin: Skin
+plugin_sh_title_class_prefix: Class Prefix
+plugin_sh_title_css_extra: Extra CSS
+
+plugin_sh_tab:
+  html: HTML Preview
+  css: CSS Preview
+  js: JavaScript Preview

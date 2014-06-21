@@ -1,0 +1,6 @@
+/*!
+Language: Nginx
+Author: Peter Leonov <gojpeg@yandex.ru>
+Contributors: Ivan Sagalaev <maniac@softwaremaniacs.org>
+*/
+hljs.registerLanguage("nginx",function(c){var b={className:"variable",variants:[{begin:/\$\d+/},{begin:/\$\{/,end:/}/},{begin:"[\\$\\@]"+c.UNDERSCORE_IDENT_RE}]};var a={endsWithParent:true,lexemes:"[a-z/_]+",keywords:{built_in:"on off yes no true false none blocked debug info notice warn error crit select break last permanent redirect kqueue rtsig epoll poll /dev/poll"},relevance:0,illegal:"=>",contains:[c.HASH_COMMENT_MODE,{className:"string",contains:[c.BACKSLASH_ESCAPE,b],variants:[{begin:/"/,end:/"/},{begin:/'/,end:/'/}]},{className:"url",begin:"([a-z]+):/",end:"\\s",endsWithParent:true,excludeEnd:true},{className:"regexp",contains:[c.BACKSLASH_ESCAPE,b],variants:[{begin:"\\s\\^",end:"\\s|{|;",returnEnd:true},{begin:"~\\*?\\s+",end:"\\s|{|;",returnEnd:true},{begin:"\\*(\\.[a-z\\-]+)+"},{begin:"([a-z\\-]+\\.)+\\*"}]},{className:"number",begin:"\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(:\\d{1,5})?\\b"},{className:"number",begin:"\\b\\d+[kKmMgGdshdwy]*\\b",relevance:0},b]};return{contains:[c.HASH_COMMENT_MODE,{begin:c.UNDERSCORE_IDENT_RE+"\\s",end:";|{",returnBegin:true,contains:[c.inherit(c.UNDERSCORE_TITLE_MODE,{starts:a})],relevance:0}],illegal:"[^\\s\\}]"}});

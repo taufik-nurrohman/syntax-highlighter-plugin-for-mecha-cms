@@ -1,0 +1,36 @@
+Title: Syntax Highlighter
+Author: Taufik Nurrohman
+URL: http://latitudu.com
+Version: 1.0.0
+
+====
+
+> Code syntax highlighter for Mecha.
+
+I use [highlight.js](http://highlightjs.org "Highlight.js &ndash; Syntax highlighting for the web") to support this plugin. Syntax highlighter credit should be directed to <http://highlightjs.org>. I only take the credit for this syntax highlighter configurator.
+
+---
+
+### Usage
+
+Although **highlight.js** has an automatic language detection feature and such, but I would still recommend you to add a language class for each `<code>` tag to minimize the work of the plugin.
+
+You cannot use the native **Markdown** syntax for creating a code block with classes by indenting a block of text. To add a class on the code block, use the [fenced code blocks](http://mecha-cms.com/article/markdown-syntax#reference:markdown-extra-s-fenced-code-block-syntax "Markdown Extra&rsquo;s Fenced Code Block Syntax") method in **Markdown Extra**:
+
+``` .markdown
+~~~ .html
+<p>paragraph <b>bold</b>
+~~~
+```
+
+or&hellip;
+
+~~~ .markdown
+``` .html
+<p>paragraph <b>bold</b>
+```
+~~~
+
+**Read more:** [Highlight.js &ndash; CSS Class Reference](http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html "Highlight.js &ndash; CSS Classes Reference")
+
+But it&rsquo;s just a choice. You can still use the indentation method to do a code block, and the automatic language detection of **highlight.js** will handle the language class placement in your code block.

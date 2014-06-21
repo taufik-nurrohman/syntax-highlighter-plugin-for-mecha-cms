@@ -1,0 +1,6 @@
+/*!
+Language: Vala
+Author: Antono Vasiljev <antono.vasiljev@gmail.com>
+Description: Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C.
+*/
+hljs.registerLanguage("vala",function(a){return{keywords:{keyword:"char uchar unichar int uint long ulong short ushort int8 int16 int32 int64 uint8 uint16 uint32 uint64 float double bool struct enum string void weak unowned owned async signal static abstract interface override while do for foreach else switch case break default return try catch public private protected internal using new this get set const stdout stdin stderr var",built_in:"DBus GLib CCode Gee Object",literal:"false true null"},contains:[{className:"class",beginKeywords:"class interface delegate namespace",end:"{",illegal:"[^,:\\n\\s\\.]",contains:[a.UNDERSCORE_TITLE_MODE]},a.C_LINE_COMMENT_MODE,a.C_BLOCK_COMMENT_MODE,{className:"string",begin:'"""',end:'"""',relevance:5},a.APOS_STRING_MODE,a.QUOTE_STRING_MODE,a.C_NUMBER_MODE,{className:"preprocessor",begin:"^#",end:"$",relevance:2},{className:"constant",begin:" [A-Z_]+ ",relevance:0}]}});

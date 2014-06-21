@@ -1,0 +1,6 @@
+/*!
+Language: Lisp
+Description: Generic lisp syntax
+Author: Vasily Polovnyov <vast@whiteants.net>
+*/
+hljs.registerLanguage("lisp",function(h){var k="[a-zA-Z_\\-\\+\\*\\/\\<\\=\\>\\&\\#][a-zA-Z0-9_\\-\\+\\*\\/\\<\\=\\>\\&\\#!]*";var l="(\\-|\\+)?\\d+(\\.\\d+|\\/\\d+)?((d|e|f|l|s)(\\+|\\-)?\\d+)?";var j={className:"shebang",begin:"^#!",end:"$"};var b={className:"literal",begin:"\\b(t{1}|nil)\\b"};var d={className:"number",variants:[{begin:l,relevance:0},{begin:"#b[0-1]+(/[0-1]+)?"},{begin:"#o[0-7]+(/[0-7]+)?"},{begin:"#x[0-9a-f]+(/[0-9a-f]+)?"},{begin:"#c\\("+l+" +"+l,end:"\\)"}]};var g=h.inherit(h.QUOTE_STRING_MODE,{illegal:null});var m={className:"comment",begin:";",end:"$"};var f={className:"variable",begin:"\\*",end:"\\*"};var n={className:"keyword",begin:"[:&]"+k};var c={begin:"\\(",end:"\\)",contains:["self",b,g,d]};var a={className:"quoted",contains:[d,g,f,n,c],variants:[{begin:"['`]\\(",end:"\\)"},{begin:"\\(quote ",end:"\\)",keywords:{title:"quote"}}]};var i={className:"list",begin:"\\(",end:"\\)"};var e={endsWithParent:true,relevance:0};i.contains=[{className:"title",begin:k},e];e.contains=[a,i,b,d,g,m,f,n];return{illegal:/\S/,contains:[d,j,b,g,m,a,i]}});

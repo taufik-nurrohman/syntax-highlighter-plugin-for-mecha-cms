@@ -1,0 +1,5 @@
+/*!
+Language: Lua
+Author: Andrew Fedorov <dmmdrs@mail.ru>
+*/
+hljs.registerLanguage("lua",function(b){var a="\\[=*\\[";var e="\\]=*\\]";var c={begin:a,end:e,contains:["self"]};var d=[{className:"comment",begin:"--(?!"+a+")",end:"$"},{className:"comment",begin:"--"+a,end:e,contains:[c],relevance:10}];return{lexemes:b.UNDERSCORE_IDENT_RE,keywords:{keyword:"and break do else elseif end false for if in local nil not or repeat return then true until while",built_in:"_G _VERSION assert collectgarbage dofile error getfenv getmetatable ipairs load loadfile loadstring module next pairs pcall print rawequal rawget rawset require select setfenv setmetatable tonumber tostring type unpack xpcall coroutine debug io math os package string table"},contains:d.concat([{className:"function",beginKeywords:"function",end:"\\)",contains:[b.inherit(b.TITLE_MODE,{begin:"([_a-zA-Z]\\w*\\.)*([_a-zA-Z]\\w*:)?[_a-zA-Z]\\w*"}),{className:"params",begin:"\\(",endsWithParent:true,contains:d}].concat(d)},b.C_NUMBER_MODE,b.APOS_STRING_MODE,b.QUOTE_STRING_MODE,{className:"string",begin:a,end:e,contains:[c],relevance:10}])}});

@@ -1,0 +1,6 @@
+/*!
+Language: Bash
+Author: vah <vahtenberg@gmail.com>
+Contributrors: Benjamin Pannell <contact@sierrasoftworks.com>
+*/
+hljs.registerLanguage("bash",function(b){var a={className:"variable",variants:[{begin:/\$[\w\d#@][\w\d_]*/},{begin:/\$\{(.*?)\}/}]};var d={className:"string",begin:/"/,end:/"/,contains:[b.BACKSLASH_ESCAPE,a,{className:"variable",begin:/\$\(/,end:/\)/,contains:[b.BACKSLASH_ESCAPE]}]};var c={className:"string",begin:/'/,end:/'/};return{lexemes:/-?[a-z\.]+/,keywords:{keyword:"if then else elif fi for break continue while in do done exit return set declare case esac export exec",literal:"true false",built_in:"printf echo read cd pwd pushd popd dirs let eval unset typeset readonly getopts source shopt caller type hash bind help sudo",operator:"-ne -eq -lt -gt -f -d -e -s -l -a"},contains:[{className:"shebang",begin:/^#![^\n]+sh\s*$/,relevance:10},{className:"function",begin:/\w[\w\d_]*\s*\(\s*\)\s*\{/,returnBegin:true,contains:[b.inherit(b.TITLE_MODE,{begin:/\w[\w\d_]*/})],relevance:0},b.HASH_COMMENT_MODE,b.NUMBER_MODE,d,c,a]}});
