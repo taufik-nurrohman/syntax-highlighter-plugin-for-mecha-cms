@@ -235,5 +235,5 @@
       <span class="grid span-5"><textarea name="css" class="input-block code"><?php echo $states['css']; ?></textarea></span>
     </label>
   </fieldset>
-  <p><button class="btn btn-primary btn-update" type="submit"><i class="fa fa-check-circle"></i> <?php echo $speak->update; ?></button></p>
+  <p><button class="btn btn-action" type="submit"><i class="fa fa-check-circle"></i> <?php echo $speak->update; ?></button></p>
 </form>
