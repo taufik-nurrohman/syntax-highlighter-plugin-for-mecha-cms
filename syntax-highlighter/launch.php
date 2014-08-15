@@ -1,7 +1,7 @@
 <?php
 
 // Load the configuration file
-$sh_config = unserialize(File::open(PLUGIN . DS . 'syntax-highlighter' . DS . 'states' . DS . 'config.txt')->read());
+$sh_config = File::open(PLUGIN . DS . 'syntax-highlighter' . DS . 'states' . DS . 'config.txt')->unserialize();
 
 // Apply filters
 Filter::add('content', function($content) use($sh_config) {

@@ -1,12 +1,12 @@
 <form class="form-plugin" action="<?php echo $config->url_current; ?>/update" method="post">
-  <input name="token" type="hidden" value="<?php echo Guardian::makeToken(); ?>">
+  <input name="token" type="hidden" value="<?php echo $token; ?>">
   <fieldset>
     <legend><?php echo $speak->plugin_sh_title_languages; ?></legend>
     <div class="grid-group">
       <div class="grid span-6 grid-group no-gap">
       <?php
 
-      $states = unserialize(File::open(PLUGIN . DS . 'syntax-highlighter' . DS . 'states' . DS . 'config.txt')->read());
+      $sh_config = File::open(PLUGIN . DS . 'syntax-highlighter' . DS . 'states' . DS . 'config.txt')->unserialize();
 
       $languages = array(
           'Apache' => 'apache',
@@ -85,7 +85,7 @@
       ?>
       <?php foreach(Mecha::eat($languages)->order('ASC')->vomit() as $language_name => $language_key): ?>
       <?php if(File::exist(PLUGIN . DS . 'syntax-highlighter' . DS . 'highlight' . DS . 'sword' . DS . 'languages' . DS . $language_key . '.js')): ?>
-      <div class="grid span-2"><label><input name="languages[]" type="checkbox" value="<?php echo $language_key; ?>"<?php echo in_array($language_key, $states['languages']) ? ' checked' : ""; ?>> <span><?php echo $language_name; ?></span></label></div>
+      <div class="grid span-2"><label><input name="languages[]" type="checkbox" value="<?php echo $language_key; ?>"<?php echo in_array($language_key, $sh_config['languages']) ? ' checked' : ""; ?>> <span><?php echo $language_name; ?></span></label></div>
       <?php endif; ?>
       <?php endforeach; ?>
       </div>
@@ -149,7 +149,7 @@
         <select name="skin" class="input-block" data-home-url="<?php echo $config->url; ?>">
           <?php foreach(Mecha::eat($skins)->order('ASC')->vomit() as $skin_name => $skin_key): ?>
           <?php if(File::exist(PLUGIN . DS . 'syntax-highlighter' . DS . 'highlight' . DS . 'shell' . DS . $skin_key . '.css')): ?>
-          <option value="<?php echo $skin_key; ?>"<?php echo $states['skin'] == $skin_key ? ' selected' : ""; ?>><?php echo $skin_name; ?></option>
+          <option value="<?php echo $skin_key; ?>"<?php echo $sh_config['skin'] == $skin_key ? ' selected' : ""; ?>><?php echo $skin_name; ?></option>
           <?php endif; ?>
           <?php endforeach; ?>
         </select>
@@ -228,11 +228,11 @@
     </label>
     <label class="grid-group">
       <span class="grid span-1 form-label"><?php echo $speak->plugin_sh_title_class_prefix; ?></span>
-      <span class="grid span-5"><input name="class_prefix" type="text" class="input-block" value="<?php echo $states['class_prefix']; ?>" placeholder="hljs-"></span>
+      <span class="grid span-5"><input name="class_prefix" type="text" class="input-block" value="<?php echo $sh_config['class_prefix']; ?>" placeholder="hljs-"></span>
     </label>
     <label class="grid-group">
       <span class="grid span-1 form-label"><?php echo $speak->plugin_sh_title_css_extra; ?></span>
-      <span class="grid span-5"><textarea name="css" class="input-block code"><?php echo $states['css']; ?></textarea></span>
+      <span class="grid span-5"><textarea name="css" class="input-block code"><?php echo $sh_config['css']; ?></textarea></span>
     </label>
   </fieldset>
   <p><button class="btn btn-action" type="submit"><i class="fa fa-check-circle"></i> <?php echo $speak->update; ?></button></p>
