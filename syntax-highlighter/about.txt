@@ -1,7 +1,7 @@
 Title: Syntax Highlighter
 Author: Taufik Nurrohman
 URL: http://latitudu.com
-Version: 1.0.1
+Version: 1.0.2
 
 ====
 
@@ -31,6 +31,6 @@ or&hellip;
 ```
 ~~~
 
-**Read more:** [Highlight.js &ndash; CSS Class Reference](http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html "Highlight.js &ndash; CSS Classes Reference")
+**Read More:** [Highlight.js &ndash; CSS Class Reference](http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html "Highlight.js &ndash; CSS Classes Reference")
 
 But it&rsquo;s just a choice. You can still use the indentation method to do a code block, and the automatic language detection of **highlight.js** will handle the language class placement in your code block.

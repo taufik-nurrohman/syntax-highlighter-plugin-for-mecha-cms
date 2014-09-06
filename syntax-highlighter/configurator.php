@@ -82,10 +82,12 @@
           'Vala' => 'vala'
       );
 
+      $config_languages = isset($sh_config['languages']) ? $sh_config['languages'] : array();
+
       ?>
       <?php foreach(Mecha::eat($languages)->order('ASC')->vomit() as $language_name => $language_key): ?>
       <?php if(File::exist(PLUGIN . DS . 'syntax-highlighter' . DS . 'highlight' . DS . 'sword' . DS . 'languages' . DS . $language_key . '.js')): ?>
-      <div class="grid span-2"><label><input name="languages[]" type="checkbox" value="<?php echo $language_key; ?>"<?php echo in_array($language_key, $sh_config['languages']) ? ' checked' : ""; ?>> <span><?php echo $language_name; ?></span></label></div>
+      <div class="grid span-2"><label><input name="languages[]" type="checkbox" value="<?php echo $language_key; ?>"<?php echo in_array($language_key, $config_languages) ? ' checked' : ""; ?>> <span><?php echo $language_name; ?></span></label></div>
       <?php endif; ?>
       <?php endforeach; ?>
       </div>

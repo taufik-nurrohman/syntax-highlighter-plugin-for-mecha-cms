@@ -31,7 +31,7 @@ Weapon::add('sword_after', function() use($sh_config) {
     if($config->url_current == $config->url . '/' . $config->manager->slug . '/plugin/syntax-highlighter') {
         echo Asset::javascript('cabinet/plugins/syntax-highlighter/sword/preview.js');
     }
-    if($config->page_type == 'manager') {
+    if(preg_match('#' . $config->url . '\/' . $config->manager->slug . '\/(article|page)\/(ignite|repair)#', $config->url_current)) {
         echo '<script>
 DASHBOARD.add(\'on_preview_complete\', function() {
     if (typeof hljs != "undefined") {
@@ -70,7 +70,7 @@ Route::accept($config->manager->slug . '/plugin/syntax-highlighter/update', func
     if($request = Request::post()) {
         Guardian::checkToken($request['token']);
         $data = trim(File::open(PLUGIN . DS . 'syntax-highlighter' . DS . 'highlight' . DS . 'sword' . DS . 'core.js')->read());
-        if( ! empty($request['languages'])) {
+        if(isset($request['languages']) && ! empty($request['languages'])) {
             foreach($request['languages'] as $language) {
                 $parts = explode('*/', File::open(PLUGIN . DS . 'syntax-highlighter' . DS . 'highlight' . DS . 'sword' . DS . 'languages' . DS . $language . '.js')->read(), 2);
                 $data .= trim(preg_replace('#\/\*([\s\S]+?)\*\/#', "", $parts[1]));
