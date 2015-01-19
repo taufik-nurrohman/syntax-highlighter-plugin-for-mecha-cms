@@ -1,5 +1,0 @@
-/*!
-Language: Rust
-Author: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
-*/
-hljs.registerLanguage("rust",function(b){var c={className:"number",begin:"\\b(0[xb][A-Za-z0-9_]+|[0-9_]+(\\.[0-9_]+)?([uif](8|16|32|64)?)?)",relevance:0};var a="assert bool break char check claim comm const cont copy dir do drop else enum extern export f32 f64 fail false float fn for i16 i32 i64 i8 if impl int let log loop match mod move mut priv pub pure ref return self static str struct task true trait type u16 u32 u64 u8 uint unsafe use vec while";return{keywords:a,illegal:"</",contains:[b.C_LINE_COMMENT_MODE,b.C_BLOCK_COMMENT_MODE,b.inherit(b.QUOTE_STRING_MODE,{illegal:null}),b.APOS_STRING_MODE,c,{className:"function",beginKeywords:"fn",end:"(\\(|<)",contains:[b.UNDERSCORE_TITLE_MODE]},{className:"preprocessor",begin:"#\\[",end:"\\]"},{beginKeywords:"type",end:"(=|<)",contains:[b.UNDERSCORE_TITLE_MODE],illegal:"\\S"},{beginKeywords:"trait enum",end:"({|<)",contains:[b.UNDERSCORE_TITLE_MODE],illegal:"\\S"}]}});

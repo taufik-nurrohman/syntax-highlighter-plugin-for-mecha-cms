@@ -1,0 +1,7 @@
+/*
+Language: Groovy
+Author: Guillaume Laforge <glaforge@gmail.com>
+Website: http://glaforge.appspot.com
+Description: Groovy programming language implementation inspired from Vsevolod's Java mode
+*/
+function(e){return{keywords:{typename:"byte short char int long boolean float double void",literal:"true false null",keyword:"def as in assert trait super this abstract static volatile transient public private protected synchronized final class interface enum if else for while switch case break default continue throw throws try catch finally implements extends new import package return instanceof"},contains:[e.C_LINE_COMMENT_MODE,{className:"javadoc",begin:"/\\*\\*",end:"\\*//*",relevance:0,contains:[{className:"javadoctag",begin:"(^|\\s)@[A-Za-z]+"}]},e.C_BLOCK_COMMENT_MODE,{className:"string",begin:'"""',end:'"""'},{className:"string",begin:"'''",end:"'''"},{className:"string",begin:"\\$/",end:"/\\$",relevance:10},e.APOS_STRING_MODE,{className:"regexp",begin:/~?\/[^\/\n]+\//,contains:[e.BACKSLASH_ESCAPE]},e.QUOTE_STRING_MODE,{className:"shebang",begin:"^#!/usr/bin/env",end:"$",illegal:"\n"},e.BINARY_NUMBER_MODE,{className:"class",beginKeywords:"class interface trait enum",end:"{",illegal:":",contains:[{beginKeywords:"extends implements"},e.UNDERSCORE_TITLE_MODE]},e.C_NUMBER_MODE,{className:"annotation",begin:"@[A-Za-z]+"},{className:"string",begin:/[^\?]{0}[A-Za-z0-9_$]+ *:/},{begin:/\?/,end:/\:/},{className:"label",begin:"^\\s*[A-Za-z0-9_$]+:",relevance:0}]}}

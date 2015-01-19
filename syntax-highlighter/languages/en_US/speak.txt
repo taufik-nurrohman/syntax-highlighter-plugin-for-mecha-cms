@@ -2,9 +2,11 @@ plugin_sh_title_languages: Languages
 plugin_sh_title_style_config: Style Configurator
 plugin_sh_title_skin: Skin
 plugin_sh_title_class_prefix: Class Prefix
-plugin_sh_title_css_extra: Extra CSS
+plugin_sh_title_css_extra: Extra <abbr title="Cascading Style Sheet">CSS</abbr>
+plugin_sh_title_check: Check All
+plugin_sh_title_uncheck: Uncheck All
 
 plugin_sh_tab:
-  html: HTML Preview
-  css: CSS Preview
+  html: <abbr title="Hyper Text Markup Language">HTML</abbr> Preview
+  css: <abbr title="Cascading Style Sheet">CSS</abbr> Preview
   js: JavaScript Preview

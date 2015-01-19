@@ -1,5 +1,0 @@
-/*!
-Language: Java
-Author: Vsevolod Solovyov <vsevolod.solovyov@gmail.com>
-*/
-hljs.registerLanguage("java",function(b){var a="false synchronized int abstract float private char boolean static null if const for true while long throw strictfp finally protected import native final return void enum else break transient new catch instanceof byte super volatile case assert short package default double public try this switch continue throws";return{keywords:a,illegal:/<\//,contains:[{className:"javadoc",begin:"/\\*\\*",end:"\\*/",contains:[{className:"javadoctag",begin:"(^|\\s)@[A-Za-z]+"}],relevance:10},b.C_LINE_COMMENT_MODE,b.C_BLOCK_COMMENT_MODE,b.APOS_STRING_MODE,b.QUOTE_STRING_MODE,{beginKeywords:"protected public private",end:/[{;=]/,keywords:a,contains:[{className:"class",beginKeywords:"class interface",endsWithParent:true,illegal:/[:"<>]/,contains:[{beginKeywords:"extends implements",relevance:10},b.UNDERSCORE_TITLE_MODE]},{begin:b.UNDERSCORE_IDENT_RE+"\\s*\\(",returnBegin:true,contains:[b.UNDERSCORE_TITLE_MODE]}]},b.C_NUMBER_MODE,{className:"annotation",begin:"@[A-Za-z]+"}]}});
