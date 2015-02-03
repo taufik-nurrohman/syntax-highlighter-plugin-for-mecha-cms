@@ -72,7 +72,7 @@ Route::accept($config->manager->slug . '/plugin/' . basename(__DIR__) . '/update
         $skin = str_replace('.hljs-', '.' . $request['class_prefix'], File::open(PLUGIN . DS . basename(__DIR__) . DS . 'cargo' . DS . 'shell' . DS . $request['skin'] . '.css')->read());
         File::write($data)->saveTo(PLUGIN . DS . basename(__DIR__) . DS . 'highlight.min.js');
         File::write($skin . $request['css'])->saveTo(PLUGIN . DS . basename(__DIR__) . DS . 'highlight.min.css');
-        File::serialize($request)->saveTo(PLUGIN . DS . basename(__DIR__) . DS . 'states' . DS . 'config.txt');
+        File::serialize($request)->saveTo(PLUGIN . DS . basename(__DIR__) . DS . 'states' . DS . 'config.txt', 0600);
         Notify::success(Config::speak('notify_success_updated', array($speak->plugin)));
         Guardian::kick(dirname($config->url_current));
     }
