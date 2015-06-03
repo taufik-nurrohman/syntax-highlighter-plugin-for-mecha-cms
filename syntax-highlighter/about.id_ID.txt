@@ -1,21 +1,21 @@
 Title: Syntax Highlighter
 Author: Taufik Nurrohman
 URL: http://latitudu.com
-Version: 1.0.4
+Version: 1.1.0
 
 ====
 
 > Pewarna sintaks kode untuk Mecha.
 
-Saya menggunakan [highlight.js](http://highlightjs.org "Highlight.js &ndash; Syntax highlighting for the web") untuk mendukung plugin ini. Kredit _syntax highlighter_ Saya serahkan kepada <http://highlightjs.org>. Saya cuma mengambil kredit untuk konfigurator _syntax highlighter_ ini saja.
+Saya menggunakan [highlight.js](http://highlightjs.org "Highlight.js &ndash; Syntax highlighting for the web") versi `8.4` untuk mendukung plugin ini. Kredit _syntax highlighter_ akan Saya serahkan kepada <http://highlightjs.org>. Saya cuma mengambil kredit untuk konfigurator _syntax highlighter_ ini.
 
 ---
 
 ### Penggunaan
 
-Meskipun **highlight.js** memiliki semacam pendeteksi bahasa otomatis, tapi Saya tetap menyarankan Anda untuk menentukan kelas bahasa secara spesifik pada setiap elemen `<code>` untuk meminimalisasi beban kerja plugin.
+Meskipun **highlight.js** memiliki fitur deteksi bahasa otomatis, tapi Saya akan tetap menyarankan kepada Anda untuk menentukan kelas bahasa secara spesifik pada setiap elemen `<code>` untuk meminimalisasikan beban kerja plugin pada saat pemuatan halaman.
 
-Anda tidak bisa menggunakan cara indentasi yang merupakan bawaan dari **Markdown** untuk menciptakan blok kode yang dilengkapi dengan kelas. Untuk menambahkan kelas pada blok kode, gunakan metode [blok kode berpagar](http://mecha-cms.com/article/markdown-syntax#reference:markdown-extra-s-fenced-code-block-syntax "Markdown Extra&rsquo;s Fenced Code Block Syntax") pada **Markdown Extra**:
+Anda tidak bisa menggunakan sintaks indentasi dari **Markdown** untuk menciptakan blok kode yang dilengkapi dengan kelas. Untuk menambahkan kelas pada blok kode, gunakan sintaks [blok kode berpagar](http://mecha-cms.com/article/markdown-syntax#reference:markdown-extra-s-fenced-code-block-syntax "Markdown Extra&rsquo;s Fenced Code Block Syntax") pada **Markdown Extra**:
 
 ``` .markdown
 ~~~ .html
@@ -31,6 +31,6 @@ atau&hellip;
 ```
 ~~~
 
-**Baca Selengkapnya:** [Highlight.js &ndash; CSS Class Reference](http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html "Highlight.js &ndash; CSS Classes Reference")
+**Baca Selengkapnya:** [Highlight.js &ndash; CSS Classes Reference](http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html "Highlight.js &ndash; CSS Classes Reference")
 
 Tapi ini cuma pilihan. Anda masih tetap bisa menggunakan metode indentasi biasa untuk menciptakan blok kode, dan fitur deteksi bahasa otomatis dari **highlight.js** akan menangani penempatan kelas bahasa pada blok kode Anda.

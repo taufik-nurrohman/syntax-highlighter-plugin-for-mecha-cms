@@ -3,121 +3,32 @@
 $sh_config = File::open(PLUGIN . DS . basename(__DIR__) . DS . 'states' . DS . 'config.txt')->unserialize();
 
 $sword = array(
-    '1c' => '1C',
-    'actionscript' => 'ActionScript',
     'apache' => 'Apache',
-    'applescript' => 'AppleScript',
-    'asciidoc' => 'AsciiDoc',
-    'aspectj' => 'AspectJ',
-    'autohotkey' => 'AutoHotkey',
-    'avrasm' => 'AVR Assembler',
-    'axapta' => 'Axapta',
     'bash' => 'Bash',
-    'brainfuck' => 'Brainfuck',
-    'capnproto' => 'Cap&rsquo;n Proto',
-    'clojure' => 'Clojure',
-    'clojure-repl' => 'Clojure REPL',
-    'cmake' => 'CMake',
-    'coffeescript' => 'CoffeeScript',
-    'cpp' => 'C++',
     'cs' => 'C#',
+    'cpp' => 'C++',
     'css' => 'CSS',
-    'd' => 'D',
-    'dart' => 'Dart',
-    'delphi' => 'Delphi',
+    'coffeescript' => 'CoffeeScript',
     'diff' => 'Diff',
-    'django' => 'Django',
-    'dos' => 'DOS .bat',
-    'dust' => 'Dust',
-    'elixir' => 'Elixir',
-    'erb' => 'ERB (Embedded Ruby)',
-    'erlang' => 'Erlang',
-    'erlang-repl' => 'Erlang REPL',
-    'fix' => 'FIX',
-    'fsharp' => 'F#',
-    'gcode' => 'G-code (ISO 6983)',
-    'gherkin' => 'Gherkin',
-    'glsl' => 'GLSL',
-    'go' => 'Go',
-    'gradle' => 'Gradle',
-    'groovy' => 'Groovy',
-    'haml' => 'Haml',
-    'handlebars' => 'Handlebars',
-    'haskell' => 'Haskell',
-    'haxe' => 'Haxe',
+    'xml' => 'HTML, XML',
     'http' => 'HTTP',
     'ini' => 'Ini',
+    'json' => 'JSON',
     'java' => 'Java',
     'javascript' => 'JavaScript',
-    'json' => 'JSON',
-    'lasso' => 'Lasso',
-    'less' => 'Less',
-    'lisp' => 'Lisp',
-    'livecodeserver' => 'LiveCode',
-    'livescript' => 'LiveScript',
-    'lua' => 'Lua',
     'makefile' => 'Makefile',
     'markdown' => 'Markdown',
-    'mathematica' => 'Mathematica',
-    'matlab' => 'Matlab',
-    'mel' => 'MEL',
-    'mercury' => 'Mercury',
-    'mizar' => 'Mizar',
-    'monkey' => 'Monkey',
     'nginx' => 'Nginx',
-    'nimrod' => 'Nimrod',
-    'nix' => 'Nix',
-    'nsis' => 'NSIS',
     'objectivec' => 'Objective C',
-    'ocaml' => 'OCaml',
-    'oxygene' => 'Oxygene',
-    'parser3' => 'Parser3',
-    'perl' => 'Perl',
     'php' => 'PHP',
-    'powershell' => 'PowerShell',
-    'processing' => 'Processing',
-    'profile' => 'Python profile',
-    'protobuf' => 'Protocol Buffers',
-    'puppet' => 'Puppet',
+    'perl' => 'Perl',
     'python' => 'Python',
-    'q' => 'Q',
-    'r' => 'R',
-    'rib' => 'RenderMan RIB',
-    'roboconf' => 'Roboconf',
-    'rsl' => 'RenderMan RSL',
     'ruby' => 'Ruby',
-    'ruleslanguage' => 'Oracle Rules Language',
-    'rust' => 'Rust',
-    'scala' => 'Scala',
-    'scheme' => 'Scheme',
-    'scilab' => 'Scilab',
-    'scss' => 'SCSS',
-    'smali' => 'Smali',
-    'smalltalk' => 'Smalltalk',
-    'sml' => 'SML',
-    'sql' => 'SQL',
-    'stata' => 'Stata',
-    'step21' => 'STEP Part 21 (ISO 10303-21)',
-    'stylus' => 'Stylus',
-    'swift' => 'Swift',
-    'tcl' => 'Tcl',
-    'tex' => 'TeX',
-    'thrift' => 'Thrift',
-    'twig' => 'Twig',
-    'typescript' => 'TypeScript',
-    'vala' => 'Vala',
-    'vbnet' => 'VB.NET',
-    'vbscript' => 'VBScript',
-    'vbscript-html' => 'VBScript in HTML',
-    'verilog' => 'Verilog',
-    'vhdl' => 'VHDL',
-    'vim' => 'Vim Script',
-    'x86asm' => 'Intel x86 Assembly',
-    'xl' => 'XL',
-    'xml' => 'HTML, XML'
+    'sql' => 'SQL'
 );
 
 $shell = array(
+    'agate' => 'Agate',
     'arta' => 'Arta',
     'ascetic' => 'Ascetic',
     'atelier-dune.dark' => 'Atelier Dun &ndash; Dark',
@@ -175,15 +86,18 @@ $lang_checked = count($lang);
 
 ?>
 <form class="form-plugin" action="<?php echo $config->url_current; ?>/update" method="post">
-  <input name="token" type="hidden" value="<?php echo $token; ?>">
+  <?php echo Form::hidden('token', $token); ?>
   <fieldset>
     <legend><?php echo $speak->plugin_sh_title_languages; ?> (<?php echo $lang_checked . ' ' . strtolower($speak->of) . ' ' . $lang_all; ?>)</legend>
-    <p><button class="btn btn-action btn-small" id="btn-check-all"><?php echo $speak->plugin_sh_title_check; ?></button> <button class="btn btn-action btn-small" id="btn-uncheck-all"><?php echo $speak->plugin_sh_title_uncheck; ?></button></p>
+    <p><?php echo Jot::button('action.small:check-circle', $speak->plugin_sh_title_check, null, null, array(
+        'id' => 'btn-check-all'
+    )) . ' ' . Jot::button('action.small:circle', $speak->plugin_sh_title_uncheck, null, null, array(
+        'id' => 'btn-uncheck-all'
+    )); ?></p>
     <div class="grid-group no-gap">
-    <?php foreach(Mecha::eat($sword)->order('ASC')->vomit() as $sword_k => $sword_n): ?>
-    <?php if(File::exist(PLUGIN . DS . basename(__DIR__) . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . $sword_k . '.js')): ?>
-    <div class="grid span-2"><label><input name="languages[]" type="checkbox" value="<?php echo $sword_k; ?>"<?php echo in_array($sword_k, $lang) ? ' checked' : ""; ?>> <span><?php echo $sword_n; ?></span></label></div>
-    <?php endif; ?>
+    <?php $swords = glob(PLUGIN . DS . basename(__DIR__) . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . '*.js'); ?>
+    <?php foreach($swords as $v): ?>
+    <div class="grid span-2"><?php $k = basename($v, '.js'); echo Form::checkbox('languages[]', $k, in_array($k, $lang), isset($sword[$k]) ? $sword[$k] : $k . '.js'); ?></div>
     <?php endforeach; ?>
     </div>
   </fieldset>
@@ -217,14 +131,14 @@ $lang_checked = count($lang);
 @<span class="keyword">import</span> <span class="hljs-function">url(<span class="hljs-string">'../reset.css'</span>)</span></span>;
 
 <span class="hljs-tag">body</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">font</span>: <span class="hljs-value">normal normal <span class="hljs-number">13</span>px/<span class="hljs-number">1.4</span> Helmet,FreeSans,Sans-Serif</span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">font</span>: <span class="hljs-value">normal normal <span class="hljs-number">13px</span>/<span class="hljs-number">1.4</span> Helmet,FreeSans,Sans-Serif</span></span>;
   <span class="hljs-rule"><span class="hljs-attribute">background-color</span>: <span class="hljs-value"><span class="hljs-hexcolor">#3f3f3f</span></span></span>;
   <span class="hljs-rule"><span class="hljs-attribute">color</span>: <span class="hljs-value">white</span></span>;
 <span class="hljs-rule">}</span></span>
 <span class="hljs-id">#container</span> <span class="hljs-rules">{
   <span class="hljs-rule"><span class="hljs-attribute">background</span>: <span class="hljs-value"><span class="hljs-hexcolor">#fff</span> <span class="hljs-function">url(<span class="hljs-string">'img/bg.png'</span>)</span> repeat-x <span class="hljs-number">0</span> <span class="hljs-number">0</span></span></span>;
   <span class="hljs-rule"><span class="hljs-attribute">float</span>: <span class="hljs-value">left</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>: <span class="hljs-value"><span class="hljs-number">600</span>px</span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">width</span>: <span class="hljs-value"><span class="hljs-number">600px</span></span></span>;
   <span class="hljs-rule"><span class="hljs-attribute">margin</span>: <span class="hljs-value"><span class="hljs-number">0</span> auto</span></span>;
 <span class="hljs-rule">}</span></span>
 <span class="hljs-class">.cf</span> <span class="hljs-rules">{
@@ -239,7 +153,7 @@ $lang_checked = count($lang);
 <span class="hljs-rule">}</span></span>
 <span class="hljs-tag">input</span><span class="hljs-attr_selector">[type="text"]</span> <span class="hljs-rules">{
   <span class="hljs-rule"><span class="hljs-attribute">display</span>: <span class="hljs-value">inline-block</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>: <span class="hljs-value"><span class="hljs-number">200</span>px</span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">width</span>: <span class="hljs-value"><span class="hljs-number">200px</span></span></span>;
 <span class="hljs-rule">}</span></span>
 <span class="hljs-tag">input</span><span class="hljs-attr_selector">[type="text"]</span><span class="hljs-pseudo">:focus</span> <span class="hljs-rules">{<span class="hljs-rule"><span class="hljs-attribute">background-color</span>: <span class="hljs-value"><span class="hljs-hexcolor">#ffa</span></span></span></span>}</code></pre>
         </div>
@@ -248,42 +162,53 @@ $lang_checked = count($lang);
  * Example Comment
  * ---------------
  */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initHighlighting</span><span class="hljs-params">(a, b, c)</span> {</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doStuff</span><span class="hljs-params">(a, b, c)</span> {</span>
     <span class="hljs-keyword">var</span> location = <span class="hljs-string">'N/A'</span>;
     <span class="hljs-keyword">var</span> data = {
         <span class="hljs-string">'title'</span>: <span class="hljs-string">'Test Page'</span>,
         <span class="hljs-string">'total'</span>: <span class="hljs-number">400</span>,
-        <span class="hljs-string">'average'</span>: .<span class="hljs-number">5</span>
+        <span class="hljs-string">'average'</span>: <span class="hljs-number">.5</span>
     };
     location.replace(<span class="hljs-regexp">/\/\*([\s\S]+?)\*\//g</span>, <span class="hljs-string">""</span>);
     alert(<span class="hljs-string">'&lt;br&gt;'</span> + location + (data.average * <span class="hljs-number">4</span>));
 }
 
 <span class="hljs-comment">// Run!</span>
-initHighlighting();</code></pre>
+doStuff();</code></pre>
         </div>
       </div>
     </div>
     <label class="grid-group">
       <span class="grid span-1 form-label"><?php echo $speak->plugin_sh_title_skin; ?></span>
       <span class="grid span-5">
-        <select name="skin" class="input-block" data-url-home="<?php echo $config->url; ?>" data-url-dir="<?php echo basename(__DIR__); ?>">
-          <?php foreach(Mecha::eat($shell)->order('ASC')->vomit() as $shell_k => $shell_n): ?>
-          <?php if(File::exist(PLUGIN . DS . basename(__DIR__) . DS . 'cargo' . DS . 'shell' . DS . $shell_k . '.css')): ?>
-          <option value="<?php echo $shell_k; ?>"<?php echo $sh_config['skin'] == $shell_k ? ' selected' : ""; ?>><?php echo $shell_n; ?></option>
-          <?php endif; ?>
-          <?php endforeach; ?>
-        </select>
+      <?php
+
+      $shells = glob(PLUGIN . DS . basename(__DIR__) . DS . 'cargo' . DS . 'shell' . DS . '*.css');
+
+      $options = array();
+      foreach($shells as $v) {
+          $k = basename($v, '.css');
+          $options[$k] = isset($shell[$k]) ? $shell[$k] : $k . '.css';
+      }
+      echo Form::select('skin', $options, $sh_config['skin'], array(
+          'class' => 'input-block',
+          'data' => array(
+              'url-home' => $config->url,
+              'url-dir' => basename(__DIR__)
+          )
+      ));
+
+      ?>
       </span>
     </label>
     <label class="grid-group">
       <span class="grid span-1 form-label"><?php echo $speak->plugin_sh_title_class_prefix; ?></span>
-      <span class="grid span-5"><input name="class_prefix" type="text" class="input-block" value="<?php echo $sh_config['class_prefix']; ?>" placeholder="hljs-"></span>
+      <span class="grid span-5"><?php echo Form::text('class_prefix', $sh_config['class_prefix'], 'hljs-', array('class' => 'input-block')); ?></span>
     </label>
     <label class="grid-group">
-      <span class="grid span-1 form-label"><?php echo $speak->plugin_sh_title_css_extra; ?></span>
-      <span class="grid span-5"><textarea name="css" class="input-block code"><?php echo $sh_config['css']; ?></textarea></span>
+      <span class="grid span-1 form-label"><?php echo $speak->plugin_sh_title_css_edit; ?></span>
+      <span class="grid span-5"><?php echo Form::textarea('css', $sh_config['css'], null, array('class' => array('textarea-block', 'code'))); ?></span>
     </label>
   </fieldset>
-  <p><button class="btn btn-action" type="submit"><i class="fa fa-check-circle"></i> <?php echo $speak->update; ?></button></p>
+  <p><?php echo Jot::button('action', $speak->update); ?></p>
 </form>

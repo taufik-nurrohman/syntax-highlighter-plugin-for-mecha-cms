@@ -1,1 +1,1 @@
-a:4:{s:9:"languages";a:6:{i:0;s:3:"css";i:1;s:3:"xml";i:2;s:4:"http";i:3;s:10:"javascript";i:4;s:3:"php";i:5;s:3:"sql";}s:4:"skin";s:7:"default";s:12:"class_prefix";s:2:"h-";s:3:"css";s:0:"";}
+a:4:{s:9:"languages";a:10:{i:0;s:6:"apache";i:1;s:3:"css";i:2;s:4:"http";i:3;s:3:"ini";i:4;s:10:"javascript";i:5;s:4:"json";i:6;s:5:"nginx";i:7;s:3:"php";i:8;s:3:"sql";i:9;s:3:"xml";}s:4:"skin";s:7:"default";s:12:"class_prefix";s:2:"h-";s:3:"css";s:0:"";}

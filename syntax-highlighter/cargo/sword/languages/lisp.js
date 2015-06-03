@@ -1,7 +1,0 @@
-/*
-Language: Lisp
-Description: Generic lisp syntax
-Author: Vasily Polovnyov <vast@whiteants.net>
-Category: lisp
-*/
-function(e){var n="[a-zA-Z_\\-\\+\\*\\/\\<\\=\\>\\&\\#][a-zA-Z0-9_\\-\\+\\*\\/\\<\\=\\>\\&\\#!]*",a="\\|[^]*?\\|",i="(\\-|\\+)?\\d+(\\.\\d+|\\/\\d+)?((d|e|f|l|s)(\\+|\\-)?\\d+)?",s={className:"shebang",begin:"^#!",end:"$"},l={className:"literal",begin:"\\b(t{1}|nil)\\b"},b={className:"number",variants:[{begin:i,relevance:0},{begin:"#b[0-1]+(/[0-1]+)?"},{begin:"#o[0-7]+(/[0-7]+)?"},{begin:"#x[0-9a-f]+(/[0-9a-f]+)?"},{begin:"#c\\("+i+" +"+i,end:"\\)"}]},g=e.inherit(e.QUOTE_STRING_MODE,{illegal:null}),c={className:"comment",begin:";",end:"$",relevance:0},t={className:"variable",begin:"\\*",end:"\\*"},d={className:"keyword",begin:"[:&]"+n},o={begin:a},r={begin:"\\(",end:"\\)",contains:["self",l,g,b]},m={className:"quoted",contains:[b,g,t,d,r],variants:[{begin:"['`]\\(",end:"\\)"},{begin:"\\(quote ",end:"\\)",keywords:"quote"},{begin:"'"+a}]},N={className:"quoted",begin:"'"+n},u={className:"list",begin:"\\(",end:"\\)"},v={endsWithParent:!0,relevance:0};return u.contains=[{className:"keyword",variants:[{begin:n},{begin:a}]},v],v.contains=[m,N,u,l,b,g,c,t,d,o],{illegal:/\S/,contains:[b,s,l,g,c,m,N,u]}}

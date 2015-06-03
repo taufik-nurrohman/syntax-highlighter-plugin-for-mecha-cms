@@ -22,8 +22,4 @@
         $form.find('input[type="checkbox"]').prop('checked', false).trigger("change");
         return false;
     });
-    new MTE($extra[0], {
-        tabSize: base.tab_size,
-        toolbar: false
-    });
 })(Zepto, DASHBOARD);

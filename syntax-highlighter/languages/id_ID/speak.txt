@@ -2,7 +2,7 @@ plugin_sh_title_languages: Bahasa
 plugin_sh_title_style_config: Konfigurasi Tema
 plugin_sh_title_skin: Tema
 plugin_sh_title_class_prefix: Prefiks Kelas
-plugin_sh_title_css_extra: Ekstra <abbr title="Cascading Style Sheet">CSS</abbr>
+plugin_sh_title_css_edit: Edit <abbr title="Cascading Style Sheet">CSS</abbr>
 plugin_sh_title_check: Pilih Semua
 plugin_sh_title_uncheck: Hapus Semua Pilihan
 

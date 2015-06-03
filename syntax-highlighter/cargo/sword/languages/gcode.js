@@ -1,6 +1,0 @@
-/*
-Language: G-code (ISO 6983)
-Contributors: Adam Joseph Cook <adam.joseph.cook@gmail.com>
-Description: G-code syntax highlighter for Fanuc and other common CNC machine tool controls.
-*/
-function(e){var i="[A-Z_][A-Z0-9_.]*",n="\\%",l={literal:"",built_in:"",keyword:"IF DO WHILE ENDWHILE CALL ENDIF SUB ENDSUB GOTO REPEAT ENDREPEAT EQ LT GT NE GE LE OR XOR"},a={className:"preprocessor",begin:"([O])([0-9]+)"},s=[e.C_LINE_COMMENT_MODE,{className:"comment",begin:/\(/,end:/\)/,contains:[e.PHRASAL_WORDS_MODE]},e.C_BLOCK_COMMENT_MODE,e.inherit(e.C_NUMBER_MODE,{begin:"([-+]?([0-9]*\\.?[0-9]+\\.?))|"+e.C_NUMBER_RE}),e.inherit(e.APOS_STRING_MODE,{illegal:null}),e.inherit(e.QUOTE_STRING_MODE,{illegal:null}),{className:"keyword",begin:"([G])([0-9]+\\.?[0-9]?)"},{className:"title",begin:"([M])([0-9]+\\.?[0-9]?)"},{className:"title",begin:"(VC|VS|#)",end:"(\\d+)"},{className:"title",begin:"(VZOFX|VZOFY|VZOFZ)"},{className:"built_in",begin:"(ATAN|ABS|ACOS|ASIN|SIN|COS|EXP|FIX|FUP|ROUND|LN|TAN)(\\[)",end:"([-+]?([0-9]*\\.?[0-9]+\\.?))(\\])"},{className:"label",variants:[{begin:"N",end:"\\d+",illegal:"\\W"}]}];return{aliases:["nc"],case_insensitive:!0,lexemes:i,keywords:l,contains:[{className:"preprocessor",begin:n},a].concat(s)}}
