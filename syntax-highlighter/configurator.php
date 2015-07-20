@@ -1,6 +1,6 @@
 <?php
 
-$sh_config = File::open(PLUGIN . DS . basename(__DIR__) . DS . 'states' . DS . 'config.txt')->unserialize();
+$sh_config = File::open(PLUGIN . DS . File::B(__DIR__) . DS . 'states' . DS . 'config.txt')->unserialize();
 
 $sword = array(
     'apache' => 'Apache',
@@ -95,9 +95,9 @@ $lang_checked = count($lang);
         'id' => 'btn-uncheck-all'
     )); ?></p>
     <div class="grid-group no-gap">
-    <?php $swords = glob(PLUGIN . DS . basename(__DIR__) . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . '*.js'); ?>
+    <?php $swords = glob(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . '*.js'); ?>
     <?php foreach($swords as $v): ?>
-    <div class="grid span-2"><?php $k = basename($v, '.js'); echo Form::checkbox('languages[]', $k, in_array($k, $lang), isset($sword[$k]) ? $sword[$k] : $k . '.js'); ?></div>
+    <div class="grid span-2"><?php $k = File::N($v); echo Form::checkbox('languages[]', $k, Text::check($k)->is($lang), isset($sword[$k]) ? $sword[$k] : $k . '.js'); ?></div>
     <?php endforeach; ?>
     </div>
   </fieldset>
@@ -183,18 +183,18 @@ doStuff();</code></pre>
       <span class="grid span-5">
       <?php
 
-      $shells = glob(PLUGIN . DS . basename(__DIR__) . DS . 'cargo' . DS . 'shell' . DS . '*.css');
+      $shells = glob(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'cargo' . DS . 'shell' . DS . '*.css');
 
       $options = array();
       foreach($shells as $v) {
-          $k = basename($v, '.css');
+          $k = File::N($v);
           $options[$k] = isset($shell[$k]) ? $shell[$k] : $k . '.css';
       }
       echo Form::select('skin', $options, $sh_config['skin'], array(
-          'class' => 'input-block',
+          'class' => 'select-block',
           'data' => array(
               'url-home' => $config->url,
-              'url-dir' => basename(__DIR__)
+              'url-dir' => File::B(__DIR__)
           )
       ));
 
@@ -207,7 +207,7 @@ doStuff();</code></pre>
     </label>
     <label class="grid-group">
       <span class="grid span-1 form-label"><?php echo $speak->plugin_sh_title_css_edit; ?></span>
-      <span class="grid span-5"><?php echo Form::textarea('css', $sh_config['css'], null, array('class' => array('textarea-block', 'code'))); ?></span>
+      <span class="grid span-5"><?php echo Form::textarea('css', $sh_config['css'], null, array('class' => array('textarea-block', 'textarea-expand', 'code'))); ?></span>
     </label>
   </fieldset>
   <p><?php echo Jot::button('action', $speak->update); ?></p>

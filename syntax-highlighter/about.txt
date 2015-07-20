@@ -1,7 +1,7 @@
 Title: Syntax Highlighter
 Author: Taufik Nurrohman
 URL: http://latitudu.com
-Version: 1.1.0
+Version: 1.2.0
 
 ====
 
@@ -34,3 +34,5 @@ or&hellip;
 **Read More:** [Highlight.js &ndash; CSS Classes Reference](http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html "Highlight.js &ndash; CSS Classes Reference")
 
 But, it&rsquo;s just a choice. You can still use the indentation method to create a code block, and the automatic language detection feature of **highlight.js** will handle the language class placement in your code block.
+
+<!-- block:donate -->

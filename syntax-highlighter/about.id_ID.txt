@@ -1,7 +1,7 @@
 Title: Syntax Highlighter
 Author: Taufik Nurrohman
 URL: http://latitudu.com
-Version: 1.1.0
+Version: 1.2.0
 
 ====
 
@@ -34,3 +34,5 @@ atau&hellip;
 **Baca Selengkapnya:** [Highlight.js &ndash; CSS Classes Reference](http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html "Highlight.js &ndash; CSS Classes Reference")
 
 Tapi ini cuma pilihan. Anda masih tetap bisa menggunakan metode indentasi biasa untuk menciptakan blok kode, dan fitur deteksi bahasa otomatis dari **highlight.js** akan menangani penempatan kelas bahasa pada blok kode Anda.
+
+<!-- block:donate -->
