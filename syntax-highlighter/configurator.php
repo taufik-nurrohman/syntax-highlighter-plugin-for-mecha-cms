@@ -97,7 +97,7 @@ $lang_checked = count($lang);
     <div class="grid-group no-gap">
     <?php $swords = glob(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . '*.js'); ?>
     <?php foreach($swords as $v): ?>
-    <div class="grid span-2"><?php $k = File::N($v); echo Form::checkbox('languages[]', $k, Text::check($k)->is($lang), isset($sword[$k]) ? $sword[$k] : $k . '.js'); ?></div>
+    <div class="grid span-2"><?php $k = File::N($v); echo Form::checkbox('languages[]', $k, Text::check($k)->in($lang), isset($sword[$k]) ? $sword[$k] : $k . '.js'); ?></div>
     <?php endforeach; ?>
     </div>
   </fieldset>
