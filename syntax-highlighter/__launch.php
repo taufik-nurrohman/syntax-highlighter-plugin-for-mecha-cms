@@ -6,7 +6,7 @@ Weapon::add('shell_after', function() {
 
 Weapon::add('SHIPMENT_REGION_BOTTOM', function() use($config) {
     if(Route::is($config->manager->slug . '/plugin/' . File::B(__DIR__))) {
-        echo Asset::javascript('cabinet/plugins/' . File::B(__DIR__) . '/assets/sword/backend.js');
+        echo Asset::javascript(__DIR__ . DS . 'assets' . DS . 'sword' . DS . 'backend.js');
     }
     $route_ = $config->manager->slug . '/(article|page)/';
     if(Route::is($route_ . 'ignite') || Route::is($route_ . 'repair/id:(:num)')) {
@@ -38,19 +38,19 @@ Weapon::add('SHIPMENT_REGION_BOTTOM', function() use($config) {
 Route::accept($config->manager->slug . '/plugin/' . File::B(__DIR__) . '/update', function() use($config, $speak, $sh_config) {
     if($request = Request::post()) {
         Guardian::checkToken($request['token']);
-        $data = trim(File::open(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'cargo' . DS . 'sword' . DS . 'core.js')->read());
+        $data = trim(File::open(__DIR__ . DS . 'assets' . DS . 'lot' . DS . 'sword' . DS . 'core.js')->read());
         if(isset($request['languages']) && ! empty($request['languages'])) {
             foreach($request['languages'] as $language) {
-                $parts = explode('*/', File::open(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . $language . '.js')->read(), 2);
+                $parts = explode('*/', File::open(__DIR__ . DS . 'assets' . DS . 'lot' . DS . 'sword' . DS . 'languages' . DS . $language . '.js')->read(), 2);
                 $data .= 'hljs.registerLanguage("' . $language . '",' . trim(preg_replace('#\/\*([\s\S]+?)\*\/#', "", $parts[1])) . ');';
             }
             $data .= 'hljs.configure({classPrefix:\'' . $sh_config['class_prefix'] . '\',tabReplace:\'    \'});hljs.initHighlighting();';
         }
         unset($request['token']); // Remove token from request array
-        $skin = str_replace('.hljs-', '.' . $request['class_prefix'], File::open(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'cargo' . DS . 'shell' . DS . $request['skin'] . '.css')->read());
-        File::write($data)->saveTo(PLUGIN . DS . File::B(__DIR__) . DS . 'highlight.min.js');
-        File::write($skin . $request['css'])->saveTo(PLUGIN . DS . File::B(__DIR__) . DS . 'highlight.min.css');
-        File::serialize($request)->saveTo(PLUGIN . DS . File::B(__DIR__) . DS . 'states' . DS . 'config.txt', 0600);
+        $skin = str_replace('.hljs-', '.' . $request['class_prefix'], File::open(__DIR__ . DS . 'assets' . DS . 'lot' . DS . 'shell' . DS . $request['skin'] . '.css')->read());
+        File::write($data)->saveTo(__DIR__ . DS . 'highlight.min.js');
+        File::write($skin . $request['css'])->saveTo(__DIR__ . DS . 'highlight.min.css');
+        File::serialize($request)->saveTo(__DIR__ . DS . 'states' . DS . 'config.txt', 0600);
         Notify::success(Config::speak('notify_success_updated', $speak->plugin));
         Guardian::kick(File::D($config->url_current));
     }

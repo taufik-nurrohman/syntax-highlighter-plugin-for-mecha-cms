@@ -1,6 +1,6 @@
 <?php
 
-$sh_config = File::open(PLUGIN . DS . File::B(__DIR__) . DS . 'states' . DS . 'config.txt')->unserialize();
+$sh_config = File::open(__DIR__ . DS . 'states' . DS . 'config.txt')->unserialize();
 
 $sword = array(
     'apache' => 'Apache',
@@ -95,9 +95,9 @@ $lang_checked = count($lang);
         'id' => 'btn-uncheck-all'
     )); ?></p>
     <div class="grid-group no-gap">
-    <?php $swords = glob(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . '*.js'); ?>
+    <?php $swords = glob(__DIR__ . DS . 'assets' . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . '*.js'); ?>
     <?php foreach($swords as $v): ?>
-    <div class="grid span-2"><?php $k = File::N($v); echo Form::checkbox('languages[]', $k, Text::check($k)->in($lang), isset($sword[$k]) ? $sword[$k] : $k . '.js'); ?></div>
+    <div class="grid span-2"><?php $k = File::N($v); echo Form::checkbox('languages[]', $k, Mecha::walk($lang)->has($k), isset($sword[$k]) ? $sword[$k] : $k . '.js'); ?></div>
     <?php endforeach; ?>
     </div>
   </fieldset>
@@ -105,12 +105,13 @@ $lang_checked = count($lang);
     <legend><?php echo $speak->plugin_sh_title_style_config; ?></legend>
     <div class="p sh-preview">
       <div class="tab-area">
-        <a class="tab active" href="#tab-content-1-1"><?php echo $speak->plugin_sh_tab->html; ?></a>
-        <a class="tab" href="#tab-content-1-2"><?php echo $speak->plugin_sh_tab->css; ?></a>
-        <a class="tab" href="#tab-content-1-3"><?php echo $speak->plugin_sh_tab->js; ?></a>
-      </div>
-      <div class="tab-content-area">
-        <div class="tab-content" id="tab-content-1-1">
+        <div class="tab-button-area">
+          <a class="tab-button active" href="#tab-content-1-1"><?php echo $speak->plugin_sh_tab->html; ?></a>
+          <a class="tab-button" href="#tab-content-1-2"><?php echo $speak->plugin_sh_tab->css; ?></a>
+          <a class="tab-button" href="#tab-content-1-3"><?php echo $speak->plugin_sh_tab->js; ?></a>
+        </div>
+        <div class="tab-content-area">
+          <div class="tab-content" id="tab-content-1-1">
 <pre class="hljs-block"><code class="xml"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">dir</span>=<span class="hljs-value">"ltr"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
@@ -125,8 +126,8 @@ $lang_checked = count($lang);
     <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
-        </div>
-        <div class="tab-content hidden" id="tab-content-1-2">
+          </div>
+          <div class="tab-content hidden" id="tab-content-1-2">
 <pre class="hljs-block"><code class="css"><span class="hljs-at_rule"><span class="hljs-comment">/* a comment */</span>
 @<span class="keyword">import</span> <span class="hljs-function">url(<span class="hljs-string">'../reset.css'</span>)</span></span>;
 
@@ -156,8 +157,8 @@ $lang_checked = count($lang);
   <span class="hljs-rule"><span class="hljs-attribute">width</span>: <span class="hljs-value"><span class="hljs-number">200px</span></span></span>;
 <span class="hljs-rule">}</span></span>
 <span class="hljs-tag">input</span><span class="hljs-attr_selector">[type="text"]</span><span class="hljs-pseudo">:focus</span> <span class="hljs-rules">{<span class="hljs-rule"><span class="hljs-attribute">background-color</span>: <span class="hljs-value"><span class="hljs-hexcolor">#ffa</span></span></span></span>}</code></pre>
-        </div>
-        <div class="tab-content hidden" id="tab-content-1-3">
+          </div>
+          <div class="tab-content hidden" id="tab-content-1-3">
 <pre class="hljs-block"><code class="hljs-javascript"><span class="hljs-comment">/**
  * Example Comment
  * ---------------
@@ -175,6 +176,7 @@ $lang_checked = count($lang);
 
 <span class="hljs-comment">// Run!</span>
 doStuff();</code></pre>
+          </div>
         </div>
       </div>
     </div>
@@ -183,7 +185,7 @@ doStuff();</code></pre>
       <span class="grid span-5">
       <?php
 
-      $shells = glob(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'cargo' . DS . 'shell' . DS . '*.css');
+      $shells = glob(__DIR__ . DS . 'assets' . DS . 'lot' . DS . 'shell' . DS . '*.css');
 
       $options = array();
       foreach($shells as $v) {
