@@ -6,7 +6,7 @@ Weapon::add('shell_after', function() {
 
 Weapon::add('SHIPMENT_REGION_BOTTOM', function() use($config) {
     if(Route::is($config->manager->slug . '/plugin/' . File::B(__DIR__))) {
-        echo Asset::javascript(__DIR__ . DS . 'assets' . DS . 'sword' . DS . 'backend.js');
+        echo Asset::javascript(__DIR__ . DS . 'assets' . DS . 'sword' . DS . 'switch.js');
     }
     $route_ = $config->manager->slug . '/(article|page)/';
     if(Route::is($route_ . 'ignite') || Route::is($route_ . 'repair/id:(:num)')) {

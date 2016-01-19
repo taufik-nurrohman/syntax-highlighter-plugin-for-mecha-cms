@@ -91,11 +91,11 @@ $lang_checked = count($lang);
     <legend><?php echo $speak->plugin_sh_title_languages; ?> (<?php echo $lang_checked . ' ' . strtolower($speak->of) . ' ' . $lang_all; ?>)</legend>
     <p><?php echo Jot::button('action.small:check-circle', $speak->plugin_sh_title_check, null, null, array(
         'id' => 'btn-check-all'
-    )) . ' ' . Jot::button('action.small:circle', $speak->plugin_sh_title_uncheck, null, null, array(
+    )) . ' ' . Jot::button('action.small:times-circle', $speak->plugin_sh_title_uncheck, null, null, array(
         'id' => 'btn-uncheck-all'
     )); ?></p>
     <div class="grid-group no-gap">
-    <?php $swords = glob(__DIR__ . DS . 'assets' . DS . 'cargo' . DS . 'sword' . DS . 'languages' . DS . '*.js'); ?>
+    <?php $swords = glob(__DIR__ . DS . 'assets' . DS . 'lot' . DS . 'sword' . DS . 'languages' . DS . '*.js'); ?>
     <?php foreach($swords as $v): ?>
     <div class="grid span-2"><?php $k = File::N($v); echo Form::checkbox('languages[]', $k, Mecha::walk($lang)->has($k), isset($sword[$k]) ? $sword[$k] : $k . '.js'); ?></div>
     <?php endforeach; ?>
@@ -195,8 +195,7 @@ doStuff();</code></pre>
       echo Form::select('skin', $options, $sh_config['skin'], array(
           'class' => 'select-block',
           'data' => array(
-              'url-home' => $config->url,
-              'url-dir' => File::B(__DIR__)
+              'url' => File::url(__DIR__ . DS . 'assets' . DS . 'lot' . DS . 'shell') . '/'
           )
       ));
 

@@ -8,7 +8,7 @@
         $uncheck = $('#btn-uncheck-all');
     $skin.on("change", function() {
         $('#sh-css, #sh-css-inline').remove();
-        $('<link id="sh-css" href="' + $(this).data('urlHome') + '/cabinet/plugins/' + $(this).data('urlDir') + '/assets/cargo/shell/' + this.value + '.css?v=' + (new Date()).getTime() + '" rel="stylesheet">').appendTo($head);
+        $('<link id="sh-css" href="' + $(this).data('url') + '/' + this.value + '.css?v=' + (new Date()).getTime() + '" rel="stylesheet">').appendTo($head);
         $('<style id="sh-css-inline">' + $extra.val().replace(new RegExp('.' + $prefix.val(), 'g'), '.hljs-') + '</style>').appendTo($head);
     }).trigger("change");
     $extra.on("keyup", function() {
