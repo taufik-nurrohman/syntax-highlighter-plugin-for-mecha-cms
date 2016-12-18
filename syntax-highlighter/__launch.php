@@ -4,7 +4,7 @@ Weapon::add('shell_after', function() {
     echo '<style>.hljs-block{background:none;padding:.5em;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;text-shadow:none;letter-spacing:0;font-style:normal}.hljs-block code{font:inherit;color:inherit;text-shadow:none}</style>';
 }, 11);
 
-Weapon::add('SHIPMENT_REGION_BOTTOM', function() use($config) {
+Weapon::add('SHIPMENT_REGION_BOTTOM', function() use($config, $sh_config) {
     if(Route::is($config->manager->slug . '/plugin/' . File::B(__DIR__))) {
         echo Asset::javascript(__DIR__ . DS . 'assets' . DS . 'sword' . DS . 'switch.js');
     }

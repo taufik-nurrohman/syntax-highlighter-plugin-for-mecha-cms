@@ -18,6 +18,6 @@ Weapon::add('shell_after', function() use($config) {
 }, 11);
 
 // Include syntax highlighter's JavaScript
-Weapon::add('SHIPMENT_REGION_BOTTOM', function() use($sh_config) {
+Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
     echo Asset::javascript(__DIR__ . DS . 'highlight.min.js');
 }, 11);
